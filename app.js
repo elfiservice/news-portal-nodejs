@@ -1,5 +1,9 @@
 //recuprar a biblioteca do express
 var express = require('express');
+
+//Secao 4 - aula 18 - exemplo criando modulos
+var msg = require('./mod_teste');
+
 //executando a funcao q o modulo do express retorna acima
 var app = express();
 
@@ -26,5 +30,6 @@ app.get('/noticias', function(req, res){
 
 //escutar a porta 3000 usando o APP
 app.listen(3000, function(){
-  console.log("Servidor rodando com express");
+
+  console.log(msg());
 });
