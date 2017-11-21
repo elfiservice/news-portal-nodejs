@@ -7,18 +7,15 @@ app.get('/tecnologia', function(req, res){
   res.render("secao/tecnologia");
 });
 
-//rotas para os links na url
-app.get('/', function(req, res){
-  res.render("home/index");
-});
+//requisita o modulo HOME para buscar a view Home
+var rotaHome = require('./app/routes/home');
+//executa o modulo home em routes
+rotaHome(app);
 
-app.get('/formulario_inclusao_noticia', function(req, res){
-  res.render("admin/form_add_noticia");
-});
+var rotaFormInclusaoNoticias = require('./app/routes/form_inclusao_noticia')(app);
+var rotaNoticias = require('./app/routes/noticias');
+rotaNoticias(app);
 
-app.get('/noticias', function(req, res){
-  res.render("noticias/noticias");
-});
 
 //escutar a porta 3000 usando o APP
 app.listen(3030, function(){

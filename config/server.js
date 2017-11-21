@@ -9,5 +9,8 @@ var app = express();
 //informar ao Express q o EJS vai trazer os HTMLS como views
 app.set('view engine', 'ejs');
 
+//seta onde vai esta localizada as views a serem pegues
+app.set('views', './app/views');
+
 //exporta o app para outros arquivos js
 module.exports = app;
