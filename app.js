@@ -13,6 +13,7 @@ var rotaHome = require('./app/routes/home');
 rotaHome(app);
 
 var rotaFormInclusaoNoticias = require('./app/routes/form_inclusao_noticia')(app);
+
 var rotaNoticias = require('./app/routes/noticias');
 rotaNoticias(app);
 
