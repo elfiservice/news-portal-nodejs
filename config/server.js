@@ -15,8 +15,11 @@ app.set('view engine', 'ejs');
 //seta onde vai esta localizada as views a serem pegues
 app.set('views', './app/views');
 
-//incluindo todas as ROTAS dentro do nosso projeto (el busca todas as rotas dentro de app/routes)
-consign().include('app/routes').into(app);
+//incluindo todas as ROTAS dentro do nosso projeto var APP, (ele busca todas as rotas dentro de app/routes)
+consign()
+    .include('app/routes')
+    .then('config/dbConnection.js')
+    .into(app);
 
 
 //exporta o app para outros arquivos js
