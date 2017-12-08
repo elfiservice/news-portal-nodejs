@@ -8,9 +8,9 @@ module.exports = function(app) {
     var connection = app.config.dbConnection();
 
     //app da aplicacao o segundo app e da pasta app/models/noticiasModel
-    var noticiasModel = app.app.models.noticiasModel;
+    var NoticiasDAO = new app.app.models.NoticiasDAO(connection);
 
-    noticiasModel.getNoticias(connection, function(error, result){
+    NoticiasDAO.getNoticias(function(error, result){
       //seleciona a View q vai ser renderizado e passa o Json com o resultado para ser usado no HTML da view
       res.render("noticias/noticias", {noticias : result});
     });
