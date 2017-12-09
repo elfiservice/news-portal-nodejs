@@ -18,8 +18,9 @@ module.exports = function(app) {
 
     //recurpera os testes de Erros acima e vertifica se houve, se sim, retona para pagina de formulario e nao inseri.
     var erros = req.validationErrors();
+    //console.log(erros);
     if(erros) {
-      res.render("admin/form_add_noticia");
+      res.render("admin/form_add_noticia", {validacao: erros});
       return;
     }
 
