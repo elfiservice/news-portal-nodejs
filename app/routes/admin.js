@@ -1,7 +1,7 @@
 module.exports = function(app) {
   app.get('/formulario_inclusao_noticia', function(req, res){
     //envia o Json validacao para ser reconhecido na View admin/form_add_noticia.ejs
-    res.render("admin/form_add_noticia", {validacao: {}});
+    res.render("admin/form_add_noticia", {validacao: {}, noticia: {}});
   });
 
   //usando o metodo post que esta no EJS (HMTL) no form de envio e usando o mesmo caminho noticias/salvar
@@ -21,7 +21,8 @@ module.exports = function(app) {
     var erros = req.validationErrors();
     //console.log(erros);
     if(erros) {
-      res.render("admin/form_add_noticia", {validacao: erros});
+      //passa a variavel/obj validacao e noticia para o EJS (view) para serem acessados de lá
+      res.render("admin/form_add_noticia", {validacao: erros, noticia: noticia});
       return;
     }
 
