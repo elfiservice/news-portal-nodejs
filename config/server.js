@@ -19,6 +19,9 @@ app.set('view engine', 'ejs');
 //seta onde vai esta localizada as views a serem pegues
 app.set('views', './app/views');
 
+//usando metodo estatico do express - para usar conteudo estatico nas views sem precisar por todo o caminho
+app.use(express.static('./app/public'));
+
 //usando o bodyParser na aplicação com a opção extended ativa para usar json
 app.use(bodyParser.urlencoded({extended: true}));
 
