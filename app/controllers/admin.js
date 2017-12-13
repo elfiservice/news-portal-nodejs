@@ -3,6 +3,19 @@ module.exports.formulario_inclusao_noticia =  function(app, req, res) {
   res.render("admin/form_add_noticia", {validacao: {}, noticia: {}});
 }
 
+module.exports.formulario_edicao_noticia =  function(app, req, res) {
+  var connection = app.config.dbConnection();
+  var NoticiasDAO = new app.app.models.NoticiasDAO(connection);
+  var idNoticiaUrl = req.query;
+
+  NoticiasDAO.getNoticia(idNoticiaUrl, function(error, result){
+    console.log(result);
+    //envia o Json validacao para ser reconhecido na View admin/form_add_noticia.ejs
+    res.render("admin/form_edicao_noticia", {validacao: {}, noticia: result});
+  });
+
+}
+
 module.exports.noticias_salvar = function(app, req, res) {
   var noticia = req.body;
 
